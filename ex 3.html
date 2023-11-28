@@ -1,0 +1,90 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Registration Form</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Registration Form</h2>
+
+    <form id="registrationForm">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{10}" required>
+            <small class="form-text text-muted">Please enter a 10-digit phone number.</small>
+        </div>
+
+        <button type="button" class="btn btn-primary" onclick="validateForm()">Register</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    function validateForm() {
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var email = document.getElementById('email').value;
+        var phone = document.getElementById('phone').value;
+
+        // Basic validation
+        if (username.trim() === '' || password.trim() === '' || email.trim() === '' || phone.trim() === '') {
+            alert('Please fill in all fields.');
+            return;
+        }
+
+        // Additional validation, e.g., email format and phone number length
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+
+        if (phone.length !== 10 || isNaN(phone)) {
+            alert('Please enter a valid 10-digit phone number.');
+            return;
+        }
+
+        // If all validation passes, you can submit the form or perform further actions
+        alert('Form submitted successfully!');
+    }
+</script>
+
+</body>
+</html>
+
